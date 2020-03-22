@@ -31,13 +31,15 @@
 
 		var remainingLetters = word.length;
 
+		var answerAttempts = 5;
+
 		// The game loop
-		while (remainingLetters >0) {
+		while (remainingLetters > 0 && answerAttempts !== 0) {
 			// Show the player their progress
 			alert(answerArray.join(" "));
 
 			// Get a guess from the player
-			var guess = prompt("Guess a letter, or click Cancel to stop playing.");
+			var guess = prompt("Guess a letter, or click Cancel to stop playing. You have only " + answerAttempts + " attempts");
 			if (guess === null) {
 				//Exit the game loop
 				break;
@@ -48,17 +50,21 @@
 				for (var j = 0; j < word.length; j++) {
 					if (word[j] === guess.toLowerCase()) {
 						if (answerArray[j] === guess.toLowerCase()) {
-							alert("This letter has already guessed!")
+							alert("This letter has already guessed!");
 						} else {
 							answerArray[j] = guess.toLowerCase();
-							remainingLetters--;
+							remainingLetters--;	
 						}
 					}
 				}
+				answerAttempts--;
 			}			
 		}
 
-		if (guess !== null) {
+		if (answerAttempts === 0) {
+			alert(answerArray.join("_"));
+			alert("You've used all the attempts. The answer was " + word);
+		} else if (guess !== null) {			
 			// Show the answer and congratulate the player
 			alert(answerArray.join("_"));
 			alert("Good job! The answer was " + word);
