@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JavaScript learning</title>
+</head>
+<body>
+	<h1>Hello world!</h1>
+	<script>
+		
+		var array1 = [1, 2, 3];
+		var array2 = [1, 2, 3];
+		var diff = 0;
+
+		var areArraySame = function (array1, array2) {
+			
+
+			if (array1.length !== array2.length) {
+				alert("The arrays are different");
+			}
+
+			for (var i = 0; i < array1.length; i++) {
+				if (array1[i] !== array2[i]) {
+					alert("The arrays are different");
+					diff++;
+					break;
+				}
+			}
+
+			if  (diff === 0) {				
+				alert("The arrays are the same");
+			}
+
+		}
+
+		areArraySame(array1, array2);
+
+	</script>
+	
+</body>
+</html>
