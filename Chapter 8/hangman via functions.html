@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JavaScript learning</title>
+</head>
+<body>
+	<h1>Hello world!</h1>
+	<script>
+		
+		//Define functions
+		var pickWord = function () {
+			// Return a random word
+
+			// Create an array of words
+			var words = [
+			// "javascript",
+			// "monkey",
+			// "amazing",
+			// "pancake",
+			"cake",
+			"limit",
+			"race",
+			"fear"
+			];
+
+			// Pick a random word
+			return words[Math.floor(Math.random() * words.length)];
+		}
+
+		var setupAnswerArray = function (word) {
+			// Return the answer array
+
+			//Set up the answer array
+			var answerArray = [];
+
+			for (var i = 0; i < word.length; i++) {
+				answerArray[i] = "_";
+			}
+
+			return answerArray;
+
+		}
+
+		var showPlayersProgress = function (answerArray) {
+			// Use alert to show the player their progress
+			return alert(answerArray.join(" "));
+		}
+
+		var getGuess = function () {
+			// Use prompt to get a guess
+			return prompt("Guess a letter, or click Cancel to stop playing. You have only " + answerAttempts + " attempts");
+		}
+
+		var updateGameState = function (guess, word, answerArray) {
+			// Update answerArray and return a number showing how many times the guess appears in the word
+			// so remainingLetters an be updated
+			for (var j = 0; j < word.length; j++) {
+				if (word[j] === guess.toLowerCase()) {
+					if (answerArray[j] === guess.toLowerCase()) {
+						alert("This letter has already guessed!");
+					} else {
+						answerArray[j] = guess.toLowerCase();
+						remainingLetters--;	
+					}
+				}
+			}
+
+			answerAttempts--;
+		}
+
+		var showAnswerAndCongatulatePlayer = function (answerArray) {
+			//Use alert to show the answer and congratulate the player
+			if (guess !== null && remainingLetters === 0) {
+				// Show the answer and congratulate the player
+				showPlayersProgress(answerArray);
+				return alert("Good job! The answer was " + word);
+			} else if (answerAttempts === 0 && remainingLetters !== 0) {			
+				// Show the answer if the player used all the attempts 
+				showPlayersProgress(answerArray);
+				return alert("You've used all the attempts. The answer was " + word);
+			} else {
+				// Show the answer if he player quit the game earlier
+				return alert("You're quit the game. The answer was " + word);
+			}
+		}
+
+		// Define variables
+		var word = pickWord();
+		var answerArray = setupAnswerArray(word);
+		var answerAttempts = 5;
+		var remainingLetters = word.length;		
+
+		// The game loop
+		while (remainingLetters > 0 && answerAttempts !== 0) {
+			// Show the player their progress
+			showPlayersProgress(answerArray);
+
+			// Get a guess from the player
+			var guess = getGuess();
+
+			if (guess === null) {
+				//Exit the game loop
+				break;
+			} else if (guess.length !== 1) {
+				alert("Please enter a single letter.");
+			} else {
+				// Update the game state with the guess
+				for (var j = 0; j < word.length; j++) {
+					if (word[j] === guess.toLowerCase()) {
+						if (answerArray[j] === guess.toLowerCase()) {
+							alert("This letter has already guessed!");
+						} else {
+							answerArray[j] = guess.toLowerCase();
+							remainingLetters--;	
+						}
+					}
+				}
+				answerAttempts--;
+			}			
+		}
+
+		showAnswerAndCongatulatePlayer(answerArray);
+
+	</script>
+</body>
+</html>
