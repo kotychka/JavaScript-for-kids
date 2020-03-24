@@ -8,15 +8,21 @@
 	<h1>Hello world!</h1>
 	<script>
 		var add = function (a, b) {
-			return c = a + b;
+			return c = parseFloat(a) + parseFloat(b);
 		}
 
 		var multiply = function (a, b) {
 			return c = a * b;
 		}
 		
-		console.log(add(10, 2));
-		console.log(multiply(10, 2));
+		// console.log(add(10, 2));
+		// console.log(multiply(10, 2));
+
+		var Number1 = prompt("Write the first number");
+		var Number2 = prompt("Write the second number");
+
+		alert(add(Number1, Number2));
+		alert(multiply(Number1, Number2));
 
 	</script>
 	
