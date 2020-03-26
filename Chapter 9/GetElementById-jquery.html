@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+
+	<title>Document</title>
+</head>
+<body>
+	<h1 id="main-heading">Hello world!</h1>
+
+	<script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+
+	<script>
+		// Replace heading with smth
+		// var newHeadingText = prompt("Please provide a new heading:");
+		// $("#main-heading").text(newHeadingText);
+
+		// // New element
+		// $("body").append("<p>This is new paragraph</p>");
+
+		// For loop with adding elements
+		// for (var i = 0; i < 3; i++) {
+		// 	var hobby = prompt("Tell me one of your hobbies!");
+		// 	$("body").append("<p>" + hobby + "</p>");
+		// }
+
+		// Fading
+		// $("h1").fadeOut(3000);
+		// // New element
+		// $("body").append("<p>This is new paragraph</p>");
+
+		// $("h1").fadeIn(2000);
+
+		// Slider
+		// $("h1").slideUp(500);
+
+		// $("h1").slideDown(500);
+		// $("body").append("<p>This is new paragraph</p>");
+
+
+		// #1 challenge For loop for friends
+		for (var i = 0; i < 3; i++) {
+			var friend = prompt("Write your name!");
+			$("body").append("<p>" + friend + "</p>");
+		}
+		$("p").append(" smells!");
+
+		// #2 challenge for loop to flash
+		var sec = 1;
+		for (var i = 0; i < 5; i++) {	
+			$("h1").fadeOut(sec * 1000).fadeIn(sec * 1000);
+			sec++;
+		}
+
+		// #3 challenge fade+delay 
+		$("body").append("<p id='chall3'>New paragraph for challenge 3</p>");
+		$("#chall3").fadeOut(1000).delay(5000).fadeIn(1000);
+
+		// #4 challenge fadeTo
+		$("h1").fadeTo(2000, 0.1);
+
+
+
+	</script>
+
+</body>
+</html>
