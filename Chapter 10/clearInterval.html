@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script
+			  src="https://code.jquery.com/jquery-3.4.1.min.js"
+			  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+			  crossorigin="anonymous"></script>
+
+	<script>			
+
+			var myVar = setInterval(myTimer, 1000);
+
+			function myTimer() {
+			  var d = new Date();
+			  var t = d.toLocaleTimeString();
+			  document.getElementById("demo").innerHTML = t;
+			}
+
+			function myStopFunction() {
+			  clearInterval(myVar);
+			}
+
+	</script>
+	
+</body>
+</html>			

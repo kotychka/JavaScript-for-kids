@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<h1 id="heading">Hello world!</h1>
+
+	<script
+			  src="https://code.jquery.com/jquery-3.4.1.min.js"
+			  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+			  crossorigin="anonymous"></script>
+
+	<script>
+		
+		// Trying setInterval
+		// var leftOffset = 0;
+
+		// var moveHeading = function () {
+		// 	$("#heading").offset({ left: leftOffset });
+			
+		// 	leftOffset++;
+
+		// 	if (leftOffset > 200) {
+		// 		leftOffset = 0;
+		// 	}
+		// };
+
+		// setInterval(moveHeading, 5);
+
+
+		// Responding to clicks
+		// var clickHandler = function (event) {
+		// 	console.log("Click! " + event.pageX + " " + event.pageY);
+		// };
+
+		// $("h1").click(clickHandler);
+
+
+		// The mousemove event
+		// $("html").mousemove(function (event) {
+		// 	$("#heading").offset({
+		// 		left: event.pageX,
+		// 		top: event.pageY
+		// 	});
+		// });
+
+
+		// #1 challenge - follow clicks
+		// $("html").click(function (event) {
+		// 	$("#heading").offset({
+		// 		left: event.pageX,
+		// 		top: event.pageY
+		// 	});
+		// });
+
+
+		// #2 challenge - heading around the page
+		var firstPos = 0;
+		var lastPos = 200;
+		var intervalLenght = 120;
+		var clicks = 0;
+
+		var offset = firstPos;
+		var direction = "right";
+
+		$("#heading").offset({ left: firstPos, top: firstPos });
+	
+		var moveHeading = function () {
+
+			if (direction === "right") {
+				$("#heading").offset({ left: offset });
+				offset++;
+
+				if (offset > lastPos) {
+					offset = firstPos;
+					direction = "down";
+				}
+			} else if (direction === "down") {
+				$("#heading").offset({ top: offset });
+				offset++;
+
+				if (offset > lastPos) {
+					offset = lastPos;
+					direction = "left";
+				}
+
+			} else if (direction === "left") {
+				$("#heading").offset({ left: offset });
+				offset--;
+
+				if (offset < firstPos) {
+					offset = lastPos;
+					direction = "up";
+				}
+			} else if (direction === "up") {
+				$("#heading").offset({ top: offset });
+				offset--;
+
+				if (offset < firstPos) {
+					offset = firstPos;
+					direction = "right";
+				}
+			}
+		};
+
+		var intervalId = setInterval(moveHeading, intervalLenght);
+		
+
+		// #3 Stop by click
+		// $("html").click(function() {
+		// 	clearInterval(intervalId);
+		// });
+
+
+		// #4 Cliking game 
+		$("#heading").click(function() {
+			clearInterval(intervalId);
+			intervalLenght /= 2;
+			clicks++;
+
+			if (clicks > 10) {
+				$("#heading").text("You win!");
+			} else {
+				intervalId = setInterval(moveHeading, intervalLenght);
+			}
+		});
+
+	</script>
+	
+</body>
+</html>

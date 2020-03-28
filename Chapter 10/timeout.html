@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script
+			  src="https://code.jquery.com/jquery-3.4.1.min.js"
+			  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+			  crossorigin="anonymous"></script>
+
+	<script>
+		// Delaying code
+		var timeUp = function () {
+			alert("Time's up!");
+		};
+
+		setTimeout(timeUp, 3000);
+		
+
+
+		// Cancelling a timeout
+		var doHomeworkAlarm = function () {
+			alert("Hey! You need to do your homework!");
+		};
+
+		var timeoutId = setTimeout(doHomeworkAlarm, 2000);
+
+		clearTimeout(timeoutId);
+
+
+		// Calling code multiple times
+		var counter = 1;
+
+		var printMessage = function () {
+			console.log("You have been staring at your console for " + counter + " seconds");
+			counter = counter + 5;
+		};
+
+		var intervalId = setInterval(printMessage, 5000);
+
+		// clearInterval(intervalId);
+
+	</script>
+	
+</body>
+</html>
